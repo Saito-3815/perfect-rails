@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # ヘルパーメソッドを定義
   # セッション情報の取り扱いは、コントローラー層で行うのでhelperファイルではなく、コントローラーに記述
   # ApplicationHelperはビューの表示に特化したメソッドを定義する
-  helper_method :logged_in?
+  helper_method :logged_in?, :current_user
 
   private
 
