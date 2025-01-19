@@ -1,4 +1,4 @@
 <%# Ajaxでのフォームエラー時はjsを返却する(SJR) %>
 <%# jメソッドは改行やクォートをエスケープして文字列をjsで扱えるようにする %>
 <%# 引数でerrors部分テンプレートを呼び出す %>
-document.getElwmentById("errors").innerHTML = "<%= j render("errors", errors: @event.errors) %>";
+document.getElementById("errors").innerHTML = "<%= j render("errors", errors: @event.errors) %>";

@@ -18,7 +18,7 @@
     .card.mb-2
       %h5.card-header 主催者
       .card-body
-        = link_to("https://github.com/#{@event.owner.name}", class: "card-link") do
+        = link_to(url_for_github(@event.owner), class: "card-link") do
           = image_tag @event.owner.image_url, width: 50, height: 50
           = "@#{@event.owner.name}"
   .col-4
@@ -28,7 +28,9 @@
       = link_to "イベントを削除する", event_path(@event), class: "btn btn-danger btn-lg btn-block", method: :delete, data: { confirm: "本当に削除しますか？" }
     -# "data-toggle: "modal""属性は、クリック時にモーダルウィンドウを表示するための属性
     -# "data-target" 属性は、クリック時に表示されるモーダルウィンドウのIDを指定
-    - if logged_in?
+    - if @ticket
+      = link_to "参加をキャンセルする", event_ticket_path(@event, @ticket), method: :delete, class: "btn btn-warning btn-lg btn-block"
+    - elsif logged_in?
       %button.btn.btn-primary.btn-lg.btn-block{ "data-toggle": "modal", "data-target": "#createTicket" }
         参加する
       %div.modal.fade#createTicket
@@ -39,7 +41,7 @@
               -# "data-dismiss"属性は、ボタンがクリックされたときにモーダルを閉じるためのBootstrap属性
               -# &timesは、HTMLエンティティで「×」を表し、閉じるボタンとして使用される
               %button.close{ type: "button", "data-dismiss": "modal" } &times;
-            = form_with(model: @event.tickets.build, url: event_tickets_path(@event)  do |f|
+            = form_with(model: @event.tickets.build, url: event_tickets_path(@event))  do |f|
               .modal-body
                 #createTicketErrors
                 = f.text_field :comment, class: "form-control"
@@ -49,3 +51,15 @@
                 = f.button "送信", class: "btn btn-primary"
     - else
       = link_to "参加する", new_event_ticket_path(@event), class: "btn btn-primary btn-lg btn-block"
+    -# 水平線を表示
+    %hr
+    .card.mb-2
+      %h5.card-header 参加者
+      -# list-group-flushクラスで、リストグループの罫線・paddingを削除
+      %ul.list-group.list-group-flush
+        - @tickets.each do |ticket|
+          %li.list-group-item
+            = link_to(url_for_github(ticket.user), class: "card-link") do
+              = image_tag ticket.user.image_url, width: 20, height: 20
+              = "@#{ticket.user.name}"
+            = ticket.comment

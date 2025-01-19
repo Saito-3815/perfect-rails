@@ -3,6 +3,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # チケットはevent_idカラムを使用して関連付けられているため、find_by(event: @event)は@event.idを自動的に参照
+    @ticket = current_user && current_user.tickets.find_by(event: @event)
+    @tickets = @event.tickets.includes(:user).order(:created_at)
   end
 
   def new
