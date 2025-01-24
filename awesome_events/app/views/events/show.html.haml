@@ -29,11 +29,11 @@
       = link_to "イベントを編集する", edit_event_path(@event), class: "btn btn-info btn-lg btn-block"
       -# data: { confirm:}で削除ボタンを押した際に確認ダイアログを表示するようにしている
       = link_to "イベントを削除する", event_path(@event), class: "btn btn-danger btn-lg btn-block", method: :delete, data: { confirm: "本当に削除しますか？" }
-    -# "data-toggle: "modal""属性は、クリック時にモーダルウィンドウを表示するための属性
-    -# "data-target" 属性は、クリック時に表示されるモーダルウィンドウのIDを指定
     - if @ticket
       = link_to "参加をキャンセルする", event_ticket_path(@event, @ticket), method: :delete, class: "btn btn-warning btn-lg btn-block"
     - elsif logged_in?
+      -# "data-toggle: "modal""属性は、クリック時にモーダルウィンドウを表示するための属性
+      -# "data-target" 属性は、クリック時に表示されるモーダルウィンドウのIDを指定
       %button.btn.btn-primary.btn-lg.btn-block{ "data-toggle": "modal", "data-target": "#createTicket" }
         参加する
       %div.modal.fade#createTicket
