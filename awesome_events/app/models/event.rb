@@ -1,4 +1,7 @@
 class Event < ApplicationRecord
+  # searchkickメソッドで専用のメソッドをモデルへ追加
+  # language: "japanese"を指定することで検索に日本語検索エンジンkuromojiを使用
+  searchkick language: "japanese"
   # has_one_attachedにdependent: :falseを指定することで、イベントが削除時にActive::Storage::Attachment(中間モデル)のみ削除
   # Active::Storage::Blob(画像ファイル)は削除されないので再びアタッチすることで復元できる
   has_one_attached :image, dependent: :false
@@ -8,7 +11,7 @@ class Event < ApplicationRecord
   validates :image,
     content_type: [:png, :jpg, :jpeg],
     size: { less_than_or_equal_to: 10.megabytes },
-    demention: { width: { max: 2000 }, height: { max: 2000 } }
+    dimension: { width: { max: 2000 }, height: { max: 2000 } }
   validates :name, length: { maximum: 50 }, presence: true
   validates :place, length: { maximum: 100 }, presence: true
   validates :content, length: { maximum: 2000 }, presence: true
@@ -24,6 +27,18 @@ class Event < ApplicationRecord
     return false unless user
 
     owner_id == user.id
+  end
+
+  # このメソッドの戻り値がインデックスに追加される
+  # 検索フォームで入力するキーワードにマッチさせる情報とイベント開始時間を登録
+  def search_data
+    {
+      name: name,
+      place: place,
+      content: content,
+      owner_name: owner&.name,
+      start_at: start_at
+    }
   end
 
   private
