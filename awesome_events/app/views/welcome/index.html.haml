@@ -1,6 +1,6 @@
 %h1 イベント一覧
 
-= form_with(model: @event_search_form, url: root_path, method: :get) do |f|
+= form_with(model: @event_search_from, url: root_path, method: :get) do |f|
   .form-group
     = f.label :keyword, "キーワード"
     = f.text_field :keyword, class: "form-control"
