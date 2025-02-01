@@ -44,7 +44,13 @@ gem 'active_storage_validations', '~> 0.8.8' # ActiveStorageのバリデーシ�
 
 gem 'kaminari', '~> 1.2.0' # ページネーション用のライブラリ
 
-gem 'searchkick', '4.6.3' # 全文検索用のライブラリ
+gem 'searchkick', '4.5.0' # 全文検索用のライブラリ
+
+# gem 'elasticsearch', '~> 7.17.4'  # uninitialized constant Elasticsearch::Transport (NameError)のエラー対策
+# gem 'elasticsearch-transport', '~> 7.17.4'
+# gem 'elasticsearch-api', '~> 7.17.4'
+
+gem 'concurrent-ruby', '1.3.4' # ActiveSupport::LoggerThreadSafeLevel::Logger (NameError)のエラー対策
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
