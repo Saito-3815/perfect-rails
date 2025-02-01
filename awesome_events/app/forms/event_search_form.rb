@@ -10,7 +10,7 @@ class EventSearchForm
   def search
     Event.search(
       keyword_for_search,
-      wherre: { start_at: { gt: start_at } },
+      where: { start_at: { gt: start_at } },
       page: page,
       per_page: 10
     )
@@ -26,6 +26,7 @@ class EventSearchForm
 
   private
 
+  # 何も入力がない場合は全検索で全ての検索結果を表示する
   def keyword_for_search
     keyword.presence || "*"
   end
