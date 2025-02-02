@@ -19,6 +19,10 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
       assert_raises(ActiveRecord::RecordNotFound) do
         delete event_url(event)
       end
+
+      # AplicationControllerでのrescue_fromの設定を追加した場合は以下とする
+      # delete event_url(event)
+      # assert_response :not_found
     end
   end
 end

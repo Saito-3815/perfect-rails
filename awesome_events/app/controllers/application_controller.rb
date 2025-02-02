@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   # recue_fromは下から上に評価される
   # rescue_from Exceptionは全てのエラーを捕捉するので一番上に記述する
-  rescue_from Exception, with: :error500
-  rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
+  # rescue_from Exception, with: :error500
+  # rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :error404
 
   private
 
