@@ -1,8 +1,8 @@
 name: Rails Tests
-on: [push, pull_request]
-jobs:
+on: [push, pull_request] # pushまたはPR作成時にトリガーされる
+jobs: # この配下に実行する処理を記述
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # 実行環境をubuntuに指定
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.7
