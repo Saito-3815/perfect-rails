@@ -1,7 +1,7 @@
-version: 1
+version: 2
 update_configs:
   - package_manager: "ruby:bundler"
-    directory: "/"
+    directory: "/awesome_events"
     update_schedule: "weekly"
     allowed_updates:
       - match:
