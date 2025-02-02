@@ -26,6 +26,10 @@ module AwesomeEvents
     config.time_zone = "Tokyo"
     config.i18n.default_locale = :ja # エラーメッセージを日本語化
     config.active_storage.variant_processor = :vips # 画像処理エンジンをVipsに変更
+    # 独自の例外が発生した場合にpublic/500.html以外を表示したい時は以下を追加
+    config.action_dispatch.rescue_responses.merge!(
+      "YourNewException" => :not_found
+    )
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
