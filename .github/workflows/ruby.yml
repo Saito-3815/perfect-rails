@@ -36,5 +36,9 @@ jobs: # この配下に実行する処理を記述
         bin/rails db:create
         bin/rails db:migrate
         bin/yarn install
+
+        bin/rails runner 'Event.search_index.delete rescue nil'
+        bin/rails runner 'Event.reindex'
+          
         bin/rails test
         bin/rails test:system
