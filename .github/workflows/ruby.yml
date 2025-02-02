@@ -9,14 +9,16 @@ jobs: # この配下に実行する処理を記述
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.7
-    - name: Configure sysctl limits
+    - name: Configure sysctl limits # ElasticsearchをGitHub Actions上で利用するための設定
       run: |
         sudo swapoff -a
         sudo sysctl -w vm.swappiness=1
         sudo sysctl -w fs.file-max=262144
         sudo sysctl -w vm.max_map_count=262144
     - name: Run Elasticsearch
-      uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1
+      # リポジトリ名@タグ名で作成したアクションのリポジトリを指定できる
+      # タグ名はブランチ名としても良い
+      uses: perfect-ruby-on-rails/elasticsearch-with-plugins-action@v1 
       with:
         stack-version: 7.6.0
         plugins: |
