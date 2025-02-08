@@ -1,9 +1,19 @@
+# version: 2
+# update_configs:
+#   - package_manager: "ruby:bundler"
+#     directory: "/awesome_events"
+#     update_schedule: "weekly"
+#     allowed_updates:
+#       - match:
+#           update_type: "all"
+#     version_requirement_updates: "off"
+
 version: 2
-update_configs:
-  - package_manager: "ruby:bundler"
+updates:
+  - package-ecosystem: "bundler"
     directory: "/awesome_events"
-    update_schedule: "weekly"
-    allowed_updates:
-      - match:
-          update_type: "all"
-    version_requirement_updates: "off"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-type: "all"
+    versioning-strategy: "auto"
