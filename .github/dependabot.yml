@@ -10,3 +10,5 @@ updates:
     ignore:
       - dependency-name: "rails"
         versions: [">= 6.1.0"]
+      - dependency-name: "bundler"
+        versions: [">= 2.4.0"]
