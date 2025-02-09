@@ -62,6 +62,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     base64 (0.2.0)
+    bigdecimal (3.1.9)
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
@@ -78,8 +79,16 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.3.4)
+    coveralls (0.7.1)
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      term-ansicolor
+      thor
     crass (1.0.6)
     date (3.4.1)
+    docile (1.4.1)
+    domain_name (0.6.20240107)
     elasticsearch (7.17.11)
       elasticsearch-api (= 7.17.11)
       elasticsearch-transport (= 7.17.11)
@@ -113,6 +122,9 @@ GEM
       hamlit (>= 1.2.0)
       railties (>= 4.0.1)
     hashie (5.0.0)
+    http-accept (1.7.0)
+    http-cookie (1.0.8)
+      domain_name (~> 0.5)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.13.0)
@@ -152,6 +164,10 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     method_source (1.1.0)
+    mime-types (3.6.0)
+      logger
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2025.0204)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
@@ -168,6 +184,7 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
+    netrc (0.11.0)
     nio4r (2.7.4)
     nokogiri (1.15.7-x86_64-darwin)
       racc (~> 1.4)
@@ -240,6 +257,11 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     regexp_parser (2.10.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rexml (3.4.0)
     rubocop (1.71.2)
       json (~> 2.3)
@@ -286,6 +308,12 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.1.0)
+    simplecov (0.22.0)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.13.1)
+    simplecov_json_formatter (0.1.4)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -302,11 +330,17 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
+    sync (0.5.0)
     temple (0.10.3)
+    term-ansicolor (1.11.2)
+      tins (~> 1.0)
     thor (1.3.2)
     thread_safe (0.3.6)
     tilt (2.5.0)
     timeout (0.4.3)
+    tins (1.38.0)
+      bigdecimal
+      sync
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -349,6 +383,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   concurrent-ruby (= 1.3.4)
+  coveralls
   elasticsearch (~> 7.17.4)
   elasticsearch-api (~> 7.17.4)
   elasticsearch-transport (~> 7.17.4)
@@ -370,6 +405,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   searchkick (= 4.5.0)
   selenium-webdriver
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
