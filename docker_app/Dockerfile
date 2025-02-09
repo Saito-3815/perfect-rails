@@ -17,9 +17,9 @@ COPY --from=nodejs /tmp/node /opt/node
 ENV PATH=/opt/node/bin:$PATH
 
 # アプリケーション起動用のユーザを追加
-RUN useradd -m -u 1000 rails
-RUN mkdir /app && chown rails /app
-USER rails
+# RUN useradd -m -u 1000 rails
+# RUN mkdir /app && chown rails /app
+# USER rails
 
 # yarnのインストール
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -33,17 +33,24 @@ RUN gem install bundler -v 2.4.22
 
 WORKDIR /app
 
-# Dockerのビルドステップでキャッシュを使うためにGemfileだけ先にコピー
-COPY --chown=rails Gemfile Gemfile.lock package.json yarn.lock /app/
+# # Dockerのビルドステップでキャッシュを使うためにGemfileだけ先にコピー
+# COPY --chown=rails Gemfile Gemfile.lock package.json yarn.lock /app/
 
-RUN bundle install
-RUN yarn install
+# RUN bundle install
+# RUN yarn install
 
-COPY --chown=rails . /app
+# COPY --chown=rails . /app
 
-RUN bin/rails assets:precompile
+# RUN bin/rails assets:precompile
 
-VOLUME /app/public
+# VOLUME /app/public
+
+# # 実行時にコマンドを指定しなかった場合に実行されるコマンド
+# CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+
+RUN bundle config set path vendor/bundle
 
 # 実行時にコマンドを指定しなかった場合に実行されるコマンド
-CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+CMD ["bash"]
+
+
