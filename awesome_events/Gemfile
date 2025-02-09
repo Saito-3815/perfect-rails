@@ -52,6 +52,8 @@ gem 'elasticsearch-api', '~> 7.17.4'
 
 gem 'concurrent-ruby', '1.3.4' # ActiveSupport::LoggerThreadSafeLevel::Logger (NameError)のエラー対策
 
+gem 'skylight'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -73,6 +75,8 @@ group :development do
   gem 'rubocop-rails', require: false
 
   gem 'brakeman' # セキュリティチェック用のライブラリ
+  
+  gem 'rack-mini-profiler', require: false # パフォーマンス計測用のライブラリ
 end
 
 group :test do

@@ -216,6 +216,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.10)
+    rack-mini-profiler (3.3.1)
+      rack (>= 1.2.0)
     rack-proxy (0.7.7)
       rack
     rack-test (2.2.0)
@@ -314,6 +316,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
+    skylight (6.0.4)
+      activesupport (>= 5.2.0)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -397,6 +401,7 @@ DEPENDENCIES
   omniauth-github (~> 1.4.0)
   omniauth-rails_csrf_protection (~> 0.1.2)
   puma (~> 4.1)
+  rack-mini-profiler
   rails (~> 6.0.3)
   rails-i18n (~> 6.0.0)
   rubocop
@@ -406,6 +411,7 @@ DEPENDENCIES
   searchkick (= 4.5.0)
   selenium-webdriver
   simplecov
+  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
