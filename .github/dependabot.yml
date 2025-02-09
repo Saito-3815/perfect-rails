@@ -6,9 +6,4 @@ updates:
       interval: "weekly"
     allow:
       - dependency-type: "all"
-    versioning-strategy: "lockfile-only"
-    ignore:
-      - dependency-name: "rails"
-        versions: [">= 6.1.0"]
-      - dependency-name: "bundler"
-        versions: [">= 2.4.0"]
+    versioning-strategy: "auto"
